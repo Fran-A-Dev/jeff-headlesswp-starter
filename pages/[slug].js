@@ -63,33 +63,9 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const GET_POSTS = gql`
-    query AllPostsQuery {
-      posts(first: 10000) {
-        nodes {
-          id
-          title
-          slug
-          uri
-        }
-      }
-    }
-  `;
-  const response = await client.query({
-    query: GET_POSTS,
-  });
-
-  const posts = response?.data?.posts?.nodes;
-  const paths = posts.map(({ slug }) => {
-    return {
-      params: {
-        slug: slug,
-      },
-    };
-  });
-
+  const paths = [];
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 }
