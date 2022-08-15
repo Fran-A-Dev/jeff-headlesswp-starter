@@ -31,6 +31,7 @@ export async function getServerSideProps({ res, params: { slug } }) {
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     ${generateSitemapPaths(pageUrls)}
+    
   </urlset>`;
   res.setHeader("Content-Type", "text/xml; charset=utf-8");
   res.setHeader(
